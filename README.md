@@ -1,4 +1,4 @@
-# RPi Voice-commanded Domotic System
+# RPi voice-commanded domotic system
 
 Raspberry Pi Voice-commanded Domotic System; with Tkinter
 
