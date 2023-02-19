@@ -23,10 +23,4 @@ Consulter le README du projet pour plus de détails. À noter que le fichier cle
 
 <img src="img/projet_v2.gif" alt="" width="600">
 
-Télécharger la vidéo (dossier vid) pour une une meilleure résolution.
-
-
-
-![](https://github.com/ugolabo/domotique_commandes_vocales/blob/main/vid/projet_v2.mp4)
-
 **Description:** le 1er Raspberry Pi fonctionne aussi avec des commandes vocales; les mêmes que pour les boutons (allumer-éteindre, armer-désarmer, etc.). Un module de reconnaissance vocale de Google (via le web) convertit l'oral (d'un micro) en texte. Il existe diverses façons de dicter une commande. Par exemple, dicter l'allumage d'une lampe peut se faire avec différents verbes (ouvrir, allumer, etc.), à différents temps de conjugaison, avec diverses constructions syntaxiques. Bref, il n'y a pas de phrase standard. Pour standardiser une commande vocale et la faire fonctionner, il faut du TALN (*NLP*). La phrase de commande subit des modifications : des modules comme NLTK, TextBlob et SpaCy enlèvent les stopwords, réduisent la phrase en tokens, puis en lemmes. Un lemme est un mot qui a perdu tout accord ou conjugaison. Les éléments de la phrase réduite sont comparés à des ensembles de mots (des noms non accordés et des verbes à l'infinitif, par exemple) pour retrouver une commande existante. Si la commande existe, cette dernière devient un message MQTT acheminé jusqu'au 2e Raspberry Pi comme avec un bouton de commande. De plus, une énonciation standard de la commande est retournée sous forme de texte, puis convertie en énonciation orale (sauvegardée en MP3 ou WAV) avec des modules comme PicoTTS et d'autres de Google. L'interface du 1er Raspberry Pi est aussi bonifiée avec l'heure du 1er Rapsberry Pi et des données météo récupérées du web avec l'API OWM au moment où l'application fonctionne.
