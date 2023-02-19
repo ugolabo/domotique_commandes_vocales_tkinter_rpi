@@ -11,7 +11,7 @@ Des projets proches des projets Système d'alarme avec un Raspberry Pi: <a href=
 
 Consulter le README du projet (dans le projet) pour plus de détails. À noter que le fichier cles.py du projet contient des valeurs pour s'authentifier à MyQTT Hub, mais ces valeurs sont factices; il faut les changer.
 
-<img src="img/projet_v1.gif" alt="" width="600">
+<img src="img/projet_v1.gif" alt="" width="800">
 
 **Description:** l'interface graphique du 1er Raspberry Pi permet de piloter un 2e Raspberry Pi à distance. Ce dernier pilote des objets connectés. En domotique, les objets peuvent être des lampes (allumer-éteindre), des ventilateurs (allumer-éteindre), des stores (monter-descendre), des portes (ouvrir-fermer ou verrouiller-déverrouiller), un système d'alarme (armer-désarmer), etc. L'interface du 1er Raspberry Pi montre les boutons de commande et les états des objets connectés. L'exécution de chaque commande devient un message MQTT qui passe par le web. Une fois la commande reçue et décodée par le 2e Raspberry Pi, ce dernier change l'état d'un objet (d'allumé à éteint, par exemple). Le 2e Raspberry Pi renvoie une confirmation du changement d'état avec un nouveau message MQTT. Une fois la changement d'état reçu et décodé par le 1er Raspberry Pi, ce dernier change l'affichage de l'état sur l'interface. L'exécution de chaque commande est gardée dans une base de données comme historique.
 
@@ -21,7 +21,7 @@ Consulter le README du projet (dans le projet) pour plus de détails. À noter q
 
 Consulter le README du projet pour plus de détails. À noter que le fichier cles.py du projet contient des valeurs pour s'authentifier à MyQTT Hub, mais ces valeurs sont factices; il faut les changer. À noter aussi les fichiers PDF de conjugaison pour varier (tester) les commandes vocales.
 
-<img src="img/projet_v2.gif" alt="" width="600">
+<img src="img/projet_v2.gif" alt="" width="800">
 
 Télécharger la vidéo (dossier vid) pour une une meilleure résolution.
 
