@@ -1,0 +1,6 @@
+HOST          = "n.myqtthub.com"
+USER_NAME     = "id"
+PASSWORD      = "pw"
+CLIENT_ID     = "name"
+CHEMIN = "path"
+owmkey = "hashkey"

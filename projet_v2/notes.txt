@@ -1,0 +1,16 @@
+RPI GPIO emulator
+RPiSim
+
+module
+datetime, time, smtplib, pyowm, pygame, requests
+pyowm.utils.config, paho.mqtt.client
+signal (des GPIO)
+random, json
+pymongo
+
+MQTT, send, receive, payload (json)
+connection, login to server
+MyQTT Hub, service
+
+pymongo, connection, login to local or remote server, CRUD
+
