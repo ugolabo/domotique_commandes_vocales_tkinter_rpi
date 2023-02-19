@@ -1,4 +1,4 @@
-# Domotique avec commandes vocales et Tkinter sur un RPi
+# Domotique avec commandes vocales et Tkinter sur des Raspberry Pi
 
 | RPi1   | RPi2   |
 |----|----|
