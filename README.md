@@ -13,11 +13,17 @@ Consulter le README du projet (dans le projet) pour plus de détails. À noter q
 
 <img src="img/projet_v1.gif" alt="" width="800">
 
-L'interface graphique du 1er Raspberry Pi (app1.py dans la console de gauche) permet de piloter un 2e Raspberry Pi à distance (app2.py dans la console de droite). Ce dernier pilote des objets connectés. En domotique, les objets peuvent être des lampes (allumer--éteindre), des ventilateurs (allumer--éteindre), des stores (monter--descendre), des portes (ouvrir--fermer ou verrouiller--déverrouiller), un système d'alarme (armer--désarmer), etc. Dans ce projet, aucun objet n'est connecté. Les connexions sont représentées par un émulateur de GPIO qui montre les changements d'état (0V--5V) des broches du 2e Raspberry Pi. L'interface du 1er Raspberry Pi montre les boutons de commande et les états des objets connectés. L'exécution de chaque commande devient un message MQTT qui passe par le web.
+L'interface graphique du 1er Raspberry Pi (app1.py dans la console de gauche) permet de piloter un 2e Raspberry Pi à distance (app2.py dans la console de droite). Ce dernier pilote des objets connectés. En domotique, les objets peuvent être des lampes (allumer--éteindre), des ventilateurs (allumer--éteindre), des stores (monter--descendre), des portes (ouvrir--fermer ou verrouiller--déverrouiller), un système d'alarme (armer--désarmer), etc.
 
-Une fois la commande reçue et décodée par le 2e Raspberry Pi, ce dernier change l'état d'un objet (d'allumé à éteint, par exemple). Le 2e Raspberry Pi renvoie une confirmation du changement d'état avec un nouveau message MQTT.
+Dans ce projet, aucun objet n'est connecté. Les connexions sont représentées par un émulateur de GPIO qui montre les changements d'état (0V--5V) des broches du 2e Raspberry Pi. L'interface du 1er Raspberry Pi montre les boutons de commande et les états des objets connectés. L'exécution de chaque commande change à la fois l'état de l'objet sur l'interface et devient un message MQTT qui passe par le web.
 
-Une fois la changement d'état reçu et décodé par le 1er Raspberry Pi, ce dernier change l'affichage de l'état sur l'interface. L'exécution de chaque commande est envoyée (via un client) dans une base de données, comme historique. Le serveur de cette base de données est actif dans une 3e console, en arrière-plan. Le fichier du projet app_mongo.py sert à faire des opérations CRUD sur un client de cette base de données.
+Une fois la commande reçue par le 2e Raspberry Pi, ce dernier change l'état d'une broche GPIO sur l'émulateur. Si le vrai objet était connecté (physiquement) sur le 2e Raspberry Pi, son état changerait: d'allumé à éteint, par exemple. 
+
+
+
+
+
+L'exécution de chaque commande est envoyée (via un client) dans une base de données, comme historique. Le serveur de cette base de données est actif dans une 3e console, en arrière-plan. Le fichier du projet app_mongo.py sert à faire des opérations CRUD sur un client de cette base de données.
 
 ## Projet, v2: ajout des commandes vocales et plus
 
@@ -29,10 +35,16 @@ Consulter le README du projet pour plus de détails. À noter que le fichier cle
 
 Pour une meilleure résolution, télécharger et visualiser le fichier MP4 (adjacent à ce README).
 
-Le 1er Raspberry Pi (app_tkinter.py dans la console de gauche) fonctionne aussi avec des commandes vocales; les mêmes que pour les boutons (allumer-éteindre, armer-désarmer, etc.). Un module de reconnaissance vocale de Google (via le web) convertit l'oral (d'un micro) en texte. Il existe diverses façons de dicter une commande. Par exemple, dicter l'allumage d'une lampe peut se faire avec différents verbes (ouvrir, allumer, etc.), à différents temps de conjugaison, avec diverses constructions syntaxiques. Bref, il n'y a pas de phrase standard.
+Le 1er Raspberry Pi (app_tkinter.py dans la console de gauche) fonctionne aussi avec des commandes vocales; les mêmes que pour les boutons (allumer-éteindre, armer-désarmer, etc.). Une reconnaissance vocale (via le web) convertit l'oral (d'un micro) en texte. Il existe diverses façons de dicter une commande. Par exemple, dicter l'allumage d'une lampe peut se faire avec différents verbes (ouvrir, allumer, etc.), à différents temps de conjugaison, avec diverses constructions syntaxiques. Bref, il n'y a pas de phrase standard.
 
-Pour standardiser une commande vocale et la faire fonctionner, il faut faire du TALN (*NLP*). La phrase de commande subit des modifications: des modules comme NLTK, TextBlob et SpaCy enlèvent les stopwords, réduisent la phrase en tokens, puis en lemmes. Un lemme est un mot qui a perdu tout accord ou conjugaison. Les éléments de la phrase réduite sont comparés à des ensembles de mots (des noms non accordés et des verbes à l'infinitif, par exemple) pour retrouver une commande existante. Si la commande existe, cette dernière devient un message MQTT acheminé jusqu'au 2e Raspberry Pi (app_gpio.py dans la console de droite) comme avec un bouton de commande. La base de données roule toujours en arrière-plan, dans une 3e console. 
+Pour standardiser une commande vocale et la faire fonctionner, il faut faire du TALN (*NLP*). La phrase de commande subit des modifications: on enlève les stopwords, on réduit la phrase à des tokens, puis à des lemmes. Un lemme est un mot qui a perdu tout accord ou conjugaison. Les lemmes sont comparés à des ensembles de lemmes pour retrouver une commande existante. Si la commande existe, cette dernière devient un message MQTT.
 
-De plus, une énonciation standard de la commande est retournée sous forme de texte, puis convertie en énonciation orale (sauvegardée en MP3 ou WAV) avec des modules comme PicoTTS et d'autres de Google. Si la commande vocale n'existe pas ou n'est pas retrouvée, des instructions indiquent à l'usager de recommencer (de changer sa formulation). Le README du projet indique le genre de commandes vocales qui fonctionnent. Des PDF de conjugaisons permettent de varier les commande encore plus.
+De plus, une énonciation standard de la commande est retournée sous forme de texte, puis convertie en énonciation orale (sauvegardée en fichier sonore). Si la commande vocale n'existe pas ou n'est pas retrouvée, des instructions indiquent à l'usager de recommencer (de changer sa formulation). Le README du projet indique le genre de commandes vocales qui fonctionnent. Des PDF de conjugaisons permettent de varier les commande encore plus.
+
+Que la commande vocale ou activée avec un bouton, si cette commande marche, un message MQTT est acheminé jusqu'au 2e Raspberry Pi (app_gpio.py dans la console de droite). Cependant, l'affichage de l'état de l'objet ne change pas automatiquement sur l'interface du 1er Raspberry Pi. Il faut une confirmation du vrai changement d'état provenant du 2e Raspberry Pi.
+
+Une fois la commande reçue par le 2e Raspberry Pi, ce dernier change l'état d'une broche GPIO sur l'émulateur. Il se peut que la commande ne passe pas; pour toute sorte de raisons. Si l'état a vraiment changé, le 2e Raspberry Pi renvoie une confirmation du changement avec un nouveau message MQTT. Une fois la changement d'état reçu par le 1er Raspberry Pi, ce dernier change l'affichage de l'état sur l'interface.
+
+La base de données roule toujours en arrière-plan, dans une 3e console. 
 
 L'interface du 1er Raspberry Pi est aussi bonifiée avec l'heure du 1er Rapsberry Pi et des données météo récupérées du web avec l'API OWM au moment où l'application fonctionne.
