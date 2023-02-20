@@ -9,7 +9,7 @@ Des projets proches des projets Système d'alarme avec un Raspberry Pi: <a href=
 
 **Objectif:** maitriser les fondements des nanoordinateurs (Raspberry Pi), des OS Linux (Raspbian, mais aussi Ubuntu, les CLI) et de montages, d'un émulateur Raspberry Pi (RpiSim) pour OS Linux, du langage Python embarqué, de concepts les fils d'exécution (*thread*), des évènements sur le système, de la conception d'interfaces graphiques (avec Tkinter), du protocole MQTT (avec un serveur Mosquitto et le service web MyQTT Hub) pour acheminer les données, colliger les transactions dans une base de données MongoDB pour garder l'historique des commandes et plus afin de construire des projets simples en IoT et de pouvoir collaborer avec des spécialistes de ces domaines dans des projets avancés.
 
-Consulter le README du projet (dans le projet) pour plus de détails. À noter que le fichier cles.py du projet contient des valeurs pour s'authentifier à MyQTT Hub, mais ces valeurs sont factices; il faut les changer.
+Consulter le README.md du projet (dans le projet) pour plus de détails. À noter que le fichier cles.py du projet contient des valeurs pour s'authentifier à MyQTT Hub, mais ces valeurs sont factices; il faut les changer.
 
 <img src="img/projet_v1.gif" alt="" width="800">
 
@@ -19,17 +19,13 @@ Dans ce projet, aucun objet n'est connecté. Les connexions sont représentées 
 
 Une fois la commande reçue par le 2e Raspberry Pi, ce dernier change l'état d'une broche GPIO sur l'émulateur. Si le vrai objet était connecté (physiquement) sur le 2e Raspberry Pi, son état changerait: d'allumé à éteint, par exemple. 
 
-
-
-
-
 L'exécution de chaque commande est envoyée (via un client) dans une base de données, comme historique. Le serveur de cette base de données est actif dans une 3e console, en arrière-plan. Le fichier du projet app_mongo.py sert à faire des opérations CRUD sur un client de cette base de données.
 
 ## Projet, v2: ajout des commandes vocales et plus
 
 **Objectif:** poursuivre avec la programmation embarquée et la programmation orientée objet en Python pour bonifier l'interface graphique (avec Tkinter), l'ajouter d'un bouton pour dicter des commandes vocales et incorporer des données météo récupérées sur le web avec l'API OWM afin de les afficher sur l'interface
 
-Consulter le README du projet pour plus de détails. À noter que le fichier cles.py du projet contient des valeurs pour s'authentifier à MyQTT Hub, mais ces valeurs sont factices; il faut les changer. À noter aussi les fichiers PDF de conjugaison pour varier (tester) les commandes vocales.
+Consulter le README.md du projet pour plus de détails. À noter que le fichier cles.py du projet contient des valeurs pour s'authentifier à MyQTT Hub, mais ces valeurs sont factices; il faut les changer. À noter aussi les fichiers PDF de conjugaison pour varier (tester) les commandes vocales.
 
 <img src="img/projet_v2.gif" alt="" width="800">
 
