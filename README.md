@@ -33,7 +33,7 @@ Consulter le README du projet pour plus de détails. À noter que le fichier cle
 
 <img src="img/projet_v2.gif" alt="" width="800">
 
-Pour une meilleure résolution, télécharger et visualiser le fichier MP4 (adjacent à ce README).
+Pour une meilleure résolution, télécharger et visualiser le fichier MP4 (adjacent à ce fichier README.md).
 
 Le 1er Raspberry Pi (app_tkinter.py dans la console de gauche) fonctionne aussi avec des commandes vocales; les mêmes que pour les boutons (allumer-éteindre, armer-désarmer, etc.). Une reconnaissance vocale (via le web) convertit l'oral (d'un micro) en texte. Il existe diverses façons de dicter une commande. Par exemple, dicter l'allumage d'une lampe peut se faire avec différents verbes (ouvrir, allumer, etc.), à différents temps de conjugaison, avec diverses constructions syntaxiques. Bref, il n'y a pas de phrase standard.
 
