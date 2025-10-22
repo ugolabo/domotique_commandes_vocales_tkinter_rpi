@@ -4,7 +4,7 @@ Les deux projets fonctionnent avec un émulateur de Raspberry Pi sur un système
 
 Le projet 1 est une étape dans la poursuite du projet 2, plus sophistiqué.
 
-## Projet 1: mise en place et structure
+## Projet 1 : mise en place et structure
 
 Un aperçu de la structure.
 
@@ -31,7 +31,7 @@ La programmation préliminaire du projet 1 s'appuie sur des concepts de fils d'e
 
 Consulter le README du projet 1 (dans son sous-répertoire) pour plus de détails. À noter que le fichier 'cles.py' contient des valeurs pour s'authentifier à MyQTT Hub, mais ces valeurs sont factices; il faut les changer.
 
-## Projet 2: mise en place et structure
+## Projet 2 : mise en place et structure
 
 Un aperçu de la structure.
 
