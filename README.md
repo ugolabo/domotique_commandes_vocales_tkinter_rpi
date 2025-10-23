@@ -1,8 +1,10 @@
 # Domotique avec commandes vocales et Tkinter sur des Raspberry Pi
 
-Les deux projets fonctionnent avec un émulateur de Raspberry Pi sur un système d'exploitation Ubuntu et des codes sources Python. La distribution Ubuntu (pour ordinateur) comme Raspbian et les autres distributions Linux pour (nanoordinateur) Raspberry Pi descendent de la distribution Debian. Le développement sur ordinateur sous Ubunbu est reproduisible sur Raspberry Pi.
+Les deux projets simulent une unité de contrôle (un premier Raspberry Pi 4) qui pilote un noeud (un deuxième Raspberry Pi 4). Ce noeud pourrait contrôler des objets comme une lampe, un ventilateur, etc.
 
-Le projet 1 est une étape dans la poursuite du projet 2, plus sophistiqué.
+La simulation permet d'émuler les deux Raspberry Pi sur un ordinateur sous un système d'exploitation Ubuntu. La migration des projets vers de vrais Raspberry Pi requiert un peu d'ajustements. Le projet utilise des codes sources Python. La distribution Ubuntu (pour ordinateur) comme la distribution Raspbian et les autres distributions Linux pour (nanoordinateur) Raspberry Pi descendent de la distribution Debian. Même à distance l'un de l'autre (c'est le but recherché), les deux Raspberry Pi communiquent par Internet avec le protocole MQTT comme avec la simulation. Il suffit que les deux Raspberry Pi soient branchés sur un réseau (câble ou Wi-Fi). L'unité de contrôle possède une interface graphique dotée de boutons qui fonctionnent comme des interrupteurs. Avec la simulation, on active ces boutons avec la souris. Avec de vrai Raspberry Pi, il faudrait ajouter un écran tactile à l'unité de contrôle. L'unité de contrôle change les états sur le noeud (le deuxième Raspberry Pi) qui contrôle des objets (allumer, démarrer, éteindre, fermer, etc.).
+
+Le projet 1 est une étape dans la poursuite du projet 2, plus sophistiqué. Avec le projet 2, il faut ajouter un microphone pour utiliser l'option des commandes vocales.
 
 ## Projet 1 : mise en place et structure
 
